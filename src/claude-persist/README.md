@@ -4,7 +4,7 @@ Persists the Claude Code login and conversation history across container rebuild
 
 ## Usage
 
-To load the Feature in all your dev containers without changing project repos, add it to your VS Code **user** settings:
+To load the Feature in all your devcontainers without changing project repos, add it to your VS Code **user** settings:
 
 ```json
 "dev.containers.defaultFeatures": {
