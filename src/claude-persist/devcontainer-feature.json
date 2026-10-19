@@ -1,0 +1,21 @@
+{
+    "name": "Claude Code Persistence",
+    "id": "claude-persist",
+    "version": "1.0.0",
+    "description": "Persists the Claude Code login and conversation history across container rebuilds via a shared Docker volume.",
+    "documentationURL": "https://github.com/sfg-autonomous-systems/sfg_devcontainer_features/tree/main/src/claude-persist",
+    "containerEnv": {
+        "CLAUDE_CONFIG_DIR": "/mnt/claude-code-config"
+    },
+    "mounts": [
+        {
+            "source": "claude-code-config",
+            "target": "/mnt/claude-code-config",
+            "type": "volume"
+        }
+    ],
+    "postStartCommand": "[ -w \"/mnt/claude-code-config\" ] || sudo -n chown -R \"$(id -u):$(id -g)\" \"/mnt/claude-code-config\" || echo \"claude-persist: '/mnt/claude-code-config' is not writable and passwordless sudo is unavailable\" >&2",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
